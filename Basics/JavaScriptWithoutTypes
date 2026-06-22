@@ -1,0 +1,8 @@
+let user_name: string = "John";
+
+function greet(user_name: string): string {
+    return "Hello, " + user_name;
+}
+
+const result = greet(user_name);
+console.log(result);
