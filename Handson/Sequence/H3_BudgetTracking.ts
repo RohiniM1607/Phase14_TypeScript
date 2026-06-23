@@ -1,13 +1,22 @@
-import promptSync from "prompt-sync";
+import * as fs from "fs";
 
-const prompt = promptSync();
+const lines = fs.readFileSync("Input.txt", "utf8").split(/\r?\n/);
 
-let income: number = Number(prompt("Enter your monthly income: "));
-let expensesInput: string = prompt("Enter your expenses (space-separated): ");
-let expenses: string[] = expensesInput.split(" ");
+// Read the second line
+const parts = lines[13].split("|");
+
+const salary: number = Number(parts[0].trim());
+console.log("Salary: " + salary);
+
+const expenses: number[] = parts[1].trim().split(" ").map(Number);
+console.log("Expenses: " + expenses.join(", "));
+
 let totalExpenses: number = 0;
+
 for (let expense of expenses) {
-    totalExpenses += Number(expense);
+    totalExpenses += expense;
 }
-let remainingBudget: number = income - totalExpenses;
+
+const remainingBudget: number = salary - totalExpenses;
+
 console.log("Remaining budget: $" + remainingBudget.toFixed(2));

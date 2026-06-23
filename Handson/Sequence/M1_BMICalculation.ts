@@ -1,17 +1,8 @@
-import * as readline from "readline";
+import * as fs from "fs";
+const lines = fs.readFileSync("Input.txt", "utf8").split(/\r?\n/);
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-rl.question("Enter the weight ", (weight: string) => {
-    rl.question("Enter the height: ", (height: string) => {
-        let w: number = Number(weight);
-        let h: number = Number(height);
-        let bmi: number= (w)/(h * h);
-        console.log("BMI: "+bmi);
-        rl.close();
-    })
-    
-});
+const [weight, height] = lines[5].split(" ").map(Number);
+let w: number = Number(weight);
+let h: number = Number(height);
+let bmi: number= (w)/(h * h);
+console.log("BMI: "+bmi);

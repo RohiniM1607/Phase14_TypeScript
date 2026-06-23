@@ -1,19 +1,13 @@
-import * as readline from "readline";
+import * as fs from "fs";
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const lines = fs.readFileSync("Input.txt", "utf8").split(/\r?\n/);
 
-rl.question("Enter the birthdate (YYYY-MM-DD): ", (birthday: string) => {
-    let birthDate = new Date(birthday);
-    let today = new Date();
-    let age: number = today.getFullYear() - birthDate.getFullYear();
+let birthday: string=lines[3];
+let birthDate = new Date(birthday);
+let today = new Date();
+let age: number = today.getFullYear() - birthDate.getFullYear();
+if (today.getMonth() < birthDate.getMonth() ||(today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+    age--;
+}
 
-    if (today.getMonth() < birthDate.getMonth() ||(today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-
-    console.log("Age: " + age);
-    rl.close();
-});
+console.log("Age: " + age);

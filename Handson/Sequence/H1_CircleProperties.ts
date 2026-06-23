@@ -1,9 +1,9 @@
-import promptSync from "prompt-sync";
-const prompt = promptSync();
+import * as fs from "fs";
+const lines = fs.readFileSync("Input.txt", "utf8").split(/\r?\n/);
 
-let radius: number = Number(prompt("Enter the radius of the circle: "));
-let angle: number = Number(prompt("Enter the angle in degrees (for sector area): "));
-
+const [radius, angle] = lines[11].split(" ").map(Number);
+console.log("Radius: "+radius);
+console.log("Angle: "+angle);
 let diameter: number = 2 * radius;
 let circumference: number = 2 * Math.PI * radius;
 let sectorArea: number = (angle / 360) * Math.PI * radius * radius;

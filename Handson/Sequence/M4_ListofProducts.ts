@@ -1,7 +1,8 @@
-import promptSync from "prompt-sync";
-const prompt = promptSync();
+import * as fs from "fs";
+const lines = fs.readFileSync("Input.txt", "utf8").split(/\r?\n/);
 
-let product: string = prompt("Enter a list of products comma seperated: ");
+let product: string = lines[8];
+console.log("Products: "+product);
 let product_list: string[] = product.split(",");
 
     console.log("List of Products:");
