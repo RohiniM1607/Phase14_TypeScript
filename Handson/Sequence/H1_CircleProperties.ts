@@ -1,7 +1,9 @@
 import * as fs from "fs";
 const lines = fs.readFileSync("Input.txt", "utf8").split(/\r?\n/);
 
-const [radius, angle] = lines[11].split(" ").map(Number);
+const input = lines[11].split(" ")
+let radius: number = Number(input[0]);
+let angle: number = Number(input[1]);
 console.log("Radius: "+radius);
 console.log("Angle: "+angle);
 let diameter: number = 2 * radius;
